@@ -49,4 +49,25 @@ X_B = P_B(1);
 Y_B = P_B(2);
 Z_B = P_B(3);
 
+%Bessel ellipsoid
+a_b = 6377397.155;
+b_b = 6356078.963;
+e2_b = (a_b^2 - b_b^2)/(a_b^2);
+
+%(X,Y,Z)_Bess -> (lat, lon)_Bess
+lam_b = atan2(Y_B,X_B);
+lam_b_deg = lam_b * 180 / pi;
+
+fi_b = atan2(Z_B,(1-e2_b)*sqrt(X_B^2 + Y_B^2));
+fi_b_deg = fi_b * 180 / pi;
+
+% (lat, lon)_Bess -> (u, v)_sphere
+
+
+
+
+
+
+
+
 
