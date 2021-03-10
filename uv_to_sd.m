@@ -10,11 +10,11 @@ vkr=vk/180*pi;
 dv = vkr-vr;
 
 %Cartographic latitude
-s = asin (sin(ur)*sin(ukr)+ cos(ur)*cos(ukr)*cos(dv))/pi*180;
+s = asin (sin(ur).*sin(ukr)+ cos(ur).*cos(ukr).*cos(dv))/pi*180;
 
 %Cartographic longtitude
-num = cos(ur)*sin(dv);
-denom = cos(ur)*sin(ukr)*cos(dv)-sin(ur)*cos(ukr);
+num = cos(ur).*sin(dv);
+denom = cos(ur).*sin(ukr).*cos(dv)-sin(ur).*cos(ukr);
 d = atan2(num,denom)/pi*180;
 
 end
