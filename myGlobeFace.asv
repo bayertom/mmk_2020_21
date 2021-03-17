@@ -1,0 +1,38 @@
+function[]= myGlobeFace(ub, vb, u1, u2, v1, v2, Du, Dv, du, dv, R, fproj, uk, vk)
+axis equal
+hold on
+
+%Load boundary points
+[sb, db] = uv_to_sd(ub, vb, uk, vk);
+[xb, yb] = fproj(R, sb, db);
+plot(xb,yb, 'rO');
+
+%Create graticule
+[XM, YM, XP, YP] = mygraticule(u1, u2, v1, v2, Du, Dv, du, dv, R, fproj, uk, vk);
+
+%Draw graticule
+plot(XM',YM','k');
+plot(XP',YP','k');
+
+%Continents: Europe
+eu = load('eur.txt');
+u_eu = eu(:,1); v_eu = eu(:,2);
+[s_eu, d_eu] = uv_to_sd(u_eu, v_eu, uk, vk);
+idx = find(s_eu<u1);
+s_eu(idx) = []; d_eu(idx) = [];
+[x_eu,y_eu] = fproj(R, s_eu, d_eu); 
+plot(x_eu,y_eu,'b', 'LineWidth', 3);
+
+%Continents: America
+am = load('eur.txt');
+u_am = eu(:,1); v_eu = eu(:,2);
+[s_eu, d_eu] = uv_to_sd(u_eu, v_eu, uk, vk);
+idx = find(s_eu<u1);
+s_eu(idx) = []; d_eu(idx) = [];
+[x_eu,y_eu] = fproj(R, s_eu, d_eu); 
+plot(x_eu,y_eu,'b', 'LineWidth', 3);
+
+%Set limits for drawing
+cmin = -2*R;
+cmax = -cmin;
+xlim([cmin, cmax]); ylim([cmin, cmax]); 
