@@ -1,8 +1,4 @@
-clc
-clear
-
-format long g
-
+function [x, y] = wgs_to_jtsk(fi_deg, lam_deg)
 %Input point
 fi = 50*pi/180;
 lam = 15*pi/180;
@@ -100,19 +96,3 @@ eps = c*d;
 %(ro, eps) -> (x, y)
 x = ro*cos(eps);
 y = ro*sin(eps);
-
-%Linear scale
-mr0 = (c*ro_0)/(R_g*cos(s_0));
-mr1 = (c*ro)/(R_g*cos(s));
-ny = (mr1-1)*1000;
-
-delta_ro = (ro - ro_0)/100000;
-mr2 = 0.9999 + 1.2282e-4 * delta_ro^2 - ...
-    3.15e-6 * delta_ro^3 + 1.8e-7 * delta_ro^4;
-
-%Convergence
-ksi = asin((cos(uk/180*pi)*sin(d))/cos(u));
-con = eps - ksi;
-con_deg1 = con/pi*180;
-con_deg2 = 0.008257*y/1000 + 2.373 * y/x;
-
