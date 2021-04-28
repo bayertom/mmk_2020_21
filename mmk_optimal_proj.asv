@@ -128,7 +128,7 @@ ny_0 = (mr_0-1)*1000;
 
 % *** GENEROVANI IZOCAR: STEREOGRAFICKA PROJEKCE ***
 %Min-max box
-umin = 26; umax = 31;
+umin = 26; umax = 30;
 vmin = 80; vmax = 89;
 Du = 0.5; Dv = 0.5;
 du = Du/10; dv = Dv/10;
@@ -169,12 +169,9 @@ u_n = uv(:, 1);
 v_n = uv(:, 2);
 
 %Prevod (u, v) -> s, K = [uk, vk]
-[s_n,d_n] = uv_to_sd(u_n, v_n, u_k_deg, v_k_deg);
 
-%Stereograficka projekce
-[X_n,Y_n] = stereo(R, s_n, d_n, s_0_deg);
 
-%Vykresleni
-plot(X_n',Y_n', 'b', 'LineWidth', 2);
+
+
 
 axis equal

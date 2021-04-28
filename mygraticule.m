@@ -1,4 +1,4 @@
-function[XM, YM, XP, YP] = mygraticule(u1, u2, v1, v2, Du, Dv, du, dv, R, fproj, uk, vk)
+function[XM, YM, XP, YP] = mygraticule(u1, u2, v1, v2, Du, Dv, du, dv, R, fproj, uk, vk, s0)
 
 %Parallels
 XP =[]; YP =[];
@@ -11,7 +11,7 @@ for u=u1:Du:u2
     [sp,dp] = uv_to_sd(up,vp,uk,vk);
 
     %Project parallel
-    [xp,yp] = fproj(R,sp,dp);
+    [xp,yp] = fproj(R,sp,dp,s0);
     
     %Append row
     XP = [XP;xp];
@@ -29,7 +29,7 @@ for v=v1:Dv:v2
     [sm,dm] = uv_to_sd(um,vm,uk,vk);
     
     %Project meridian
-    [xm,ym] = fproj(R,sm,dm);
+    [xm,ym] = fproj(R,sm,dm,s0);
     
     %Append row
     XM = [XM;xm];
