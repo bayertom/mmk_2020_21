@@ -16,5 +16,5 @@ s = asin (sin(ur).*sin(ukr)+ cos(ur).*cos(ukr).*cos(dv))/pi*180;
 num = cos(ur).*sin(dv);
 denom = cos(ur).*sin(ukr).*cos(dv)-sin(ur).*cos(ukr);
 d = atan2(num,denom)/pi*180;
-
+d=360-d;
 end
