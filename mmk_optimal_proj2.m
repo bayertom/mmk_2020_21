@@ -61,3 +61,40 @@ H1_C = sqrt(H1_2_C);
 H2_A = sqrt(H2_2_A);
 H2_C = sqrt(H2_2_C);
 
+%Kresba geograficke site
+Du = 10; Dv = 10;
+du = Du/20; dv = Dv/20;
+fproj = @sinu
+u_k =90; v_k = 0;
+u_0= 0;
+
+[XM, YM, XP, YP] = mygraticule(u_min, u_max, v_min, v_max, Du, Dv,...
+                               du, dv, R, fproj, u_k, v_k, u_0);
+hold on
+plot(XM',YM', 'k');
+plot(XP',YP', 'k');
+
+%Kresba kontinentu
+draw_continents('eur.txt',R, fproj);
+draw_continents('amer.txt',R, fproj);
+draw_continents('austr.txt',R, fproj);
+draw_continents('anta.txt',R, fproj);
+
+%Izocary a
+[C_a, h_a] =contour(X, Y, sqrt(m2_max), [1:0.3:5], 'LineColor', 'r', 'LineWidth', 2);
+clabel(C_a, h_a, 'Color','r', 'labelspacing', 1000);
+
+%Izocary M
+M = 100000000./sqrt(m2_max);
+[C_M, h_M] =contour(X, Y, M, [20000000:10000000:100000000], 'LineColor', 'g', 'LineWidth', 2);
+clabel(C_M, h_M, 'Color','g', 'labelspacing', 1000);
+
+
+
+
+
+axis equal
+
+
+
+
