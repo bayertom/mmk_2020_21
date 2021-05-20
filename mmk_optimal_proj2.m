@@ -80,16 +80,25 @@ draw_continents('amer.txt',R, fproj);
 draw_continents('austr.txt',R, fproj);
 draw_continents('anta.txt',R, fproj);
 
-%Izocary a
+%Izocary a s krokem 0.5
 [C_a, h_a] =contour(X, Y, sqrt(m2_max), [1:0.3:5], 'LineColor', 'r', 'LineWidth', 2);
 clabel(C_a, h_a, 'Color','r', 'labelspacing', 1000);
 
-%Izocary M
+%Vypocet meritkoveho cisla
 M = 100000000./sqrt(m2_max);
+
+%Izocary M s krokem 10 000 000
 [C_M, h_M] =contour(X, Y, M, [20000000:10000000:100000000], 'LineColor', 'g', 'LineWidth', 2);
 clabel(C_M, h_M, 'Color','g', 'labelspacing', 1000);
 
+%Vypocet maximalniho uhloveho zkresleni
+delta_omega = 2*asin(abs(b-a)./(b+a))*180/pi;
 
+%Izocary maximalniho uhloveho zkresleni s krokem 10 deg + popis
+[C_d, h_d] = contour(X, Y, delta_omega, [0:10:180], 'LineColor', 'm', 'LineWidth', 2);
+clabel(C_d, h_d, 'Color', 'm','labelspacing', 700);
+
+axis equal
 
 
 
