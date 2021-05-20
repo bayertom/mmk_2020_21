@@ -102,8 +102,4 @@ axis equal
 
 
 
-axis equal
-
-
-
 
